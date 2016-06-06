@@ -1,14 +1,40 @@
 <html>
-<body>
-<form action="http://127.0.0.1:8081/process_post" method="POST">
-TAA: <input type="text" name="taa"> <br />
+	<head>
+		<title>Abas App</title>
+		<script type = "text/javascript" 
+         src = "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+		</script>
+	</head>
+	
+	<body>
+	<!--<script type = "text/javascript" 
+		var list = document.getElementById('issued');
 
-CA: <input type="text" name="ca"> <br />
-CB: <input type="text" name="cb"> <br />
-CC: <input type="text" name="cc"> <br />
-CD: <input type="text" name="cd"> <br />
+		function changeText2() {
+		    var taa = document.getElementById('taa').value;
+		    var entry = document.createElement('li');
+		    entry.appendChild(document.createTextNode(taa));
+		    list.appendChild(entry);
+		}
+	</script>-->
+		<p>Incluido para abastecimento:</p>
+		<ol id="issued"></ol>
+		<form action="http://127.0.0.1:8081/process_post" method="POST">
+			Adicionar:
+			<input type="text" name="taa">
+			<p>
+				<input type="submit" onclick='changeText2()' value="Adicionar" />
+			</p>
+		</form>
+		<script type = "text/javascript" 
+			var list = document.getElementById('issued');
 
-<input type="submit" value="Adicionar" />
-</form>
-</body>
+			function changeText2() {
+				var taa = document.getElementById('taa').value;
+				var entry = document.createElement('li');
+				entry.appendChild(document.createTextNode(taa));
+				list.appendChild(entry);
+			}
+		</script>
+	</body>	
 </html>
