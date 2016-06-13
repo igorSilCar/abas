@@ -1,22 +1,22 @@
-# abas
-##Gerenciador de abastecimento distribuido
+## abas
+#Gerenciador de abastecimento distribuido
 
-#Necessario node.js e seguintes dependencias:
+###Necessario node.js e seguintes dependencias:
 
 express
 body-parser
 multichain-node
 
-#Para instalar, rode:
+###Para instalar, rode:
 npm install nomedependencia
 
-#Multichain necessario:
+###Multichain necessario:
 http://www.multichain.com/download-install/
 
-#Comandos para inicializacao da blockchain
+###Comandos para inicializacao da blockchain
 multichain-util create chain1
 
-#Altere o arquivo params.dat localizado em:
+###Altere o arquivo params.dat localizado em:
 ~/.multichain/chain1/params.dat
 
 anyone-can-connect = true
@@ -24,7 +24,7 @@ anyone-can-send = true
 anyone-can-receive = true
 anyone-can-issue = true
 
-#Anote a porta rpc listada no fim do arquivo, para utlizar na variavel port em multichain no arquivo app.js
+###Anote a porta rpc listada no fim do arquivo, para utlizar na variavel port em multichain no arquivo app.js
 
 var multichain = require("multichain-node")({
     port: rpcporthere,
@@ -33,21 +33,21 @@ var multichain = require("multichain-node")({
     pass: 'passwordhere'
 })
 
-#Inicie a blockchain com user e pass:
+###Inicie a blockchain com user e pass:
 
 multichaind cadeiat1 -daemon -rpcuser='userhere' -rpcpassword='passwordhere'
 
-#E inicie o app:
+###E inicie o app:
 
 node app.js
 
 .........................................
 
-##Problemas conhecidos:
+###Problemas conhecidos:
 
 Emite mas nao gasta via app, somente cli do multichain;
 Nao conecta a rede externa;
 Apenas a ultima resposta na pagina.
 Nao persiste a relacao entre endereco e terminal
 
-Igor da Silva de Carvalho
+##Igor da Silva de Carvalho
