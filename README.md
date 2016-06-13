@@ -24,7 +24,7 @@ anyone-can-send = true
 anyone-can-receive = true
 anyone-can-issue = true
 
-Anote a porta rpc listada no fim do arquivo, para utlizar na variavel port em multichain no arquivo main.js
+Anote a porta rpc listada no fim do arquivo, para utlizar na variavel port em multichain no arquivo app.js
 
 var multichain = require("multichain-node")({
     port: rpcporthere,
@@ -39,7 +39,7 @@ multichaind cadeiat1 -daemon -rpcuser='userhere' -rpcpassword='passwordhere'
 
 E inicie o app:
 
-node main.js
+node app.js
 
 .........................................
 
