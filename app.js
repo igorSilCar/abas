@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+app.set('view engine', 'pug');
 var multichain = require("multichain-node")({
 	port: 4790,
     host: '127.0.0.1',
@@ -8,19 +9,18 @@ var multichain = require("multichain-node")({
     pass: 'pss'
 })
 
+var notas = [
+	'notaa',
+	'notab',
+	'notac',
+	'notad'
+];
+
+var end;
+var screendata = new Array();
+var termaddrs = new Array({trm: '70000', adrs: '1A6CRty6vfYybQLfMtYYZeCYajUEyCQ2n9WJfU'});
+
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
-
-app.set('view engine', 'pug');
-
-app.use(express.static('public'));
-
-/*app.get('/index.htm', function (req, res) {
-	res.sendFile( __dirname + "/" + "add" );
-})
-
-app.get('/', function (req, res) {
-	res.sendFile( __dirname + "/view/" + "add" );
-})*/
 
 var server = app.listen(8081, function () {
 
@@ -45,13 +45,6 @@ var abasterm = function(adrs, type, value, term){
 	})
 }
 
-var notas = [
-	'notaa',
-	'notab',
-	'notac',
-	'notad'
-];
-
 var confabas = function(adrs, type, value, term){
 	multichain.sendAssetTo({
 		address: adrs,
@@ -66,12 +59,10 @@ var confabas = function(adrs, type, value, term){
 	})
 }
 
-var termaddrs = new Array({trm: '70000', addrs: '1A6CRty6vfYybQLfMtYYZeCYajUEyCQ2n9WJfU'});
-
 var gettaddrs = function(term){
 	for(i=0; i<termaddrs.length; i++){
 		if (term===termaddrs[i].trm){
-			return termaddrs[i].addrs;
+			return termaddrs[i].adrs;
 		}
 	}
 	multichain.getNewAddress((err, info) => {
@@ -79,11 +70,12 @@ var gettaddrs = function(term){
 			console.log(err);
 			throw err;
 		}
-		termaddrs.push({
+		end = termaddrs[termaddrs.length] = {
 			trm: term,
 			adrs: info
-		})
+		}
 	})
+	return termaddrs[termaddrs.length-1].adrs;
 }
 
 app.get('/', function (req, res) {
@@ -95,14 +87,15 @@ app.post('/', urlencodedParser, function (req, res) {
 	end = gettaddrs(taa[0]);
 	for (i=0; i<taa.length-1; i++){
 		abasterm(end, notas[i], taa[i+1], taa[0]);
-	}	
-	res.render('add', {
+	}
+	screendata.push({
 		term: taa[0],
 		notaa: taa[1],
 		notab: taa[2],
 		notac: taa[3],
 		notad: taa[4]
 	})
+	res.render('add', screendata[0]);
 })
 
 /* funcao legado

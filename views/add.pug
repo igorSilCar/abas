@@ -1,7 +1,7 @@
 doctype html
 html
 	head
-		title= 'Terminais Adicionados'
+		title= 'Adicionar Terminais'
 		link(rel="stylesheet" href="http://yegor256.github.io/tacit/tacit.min.css")
 	body
 		p.
@@ -15,12 +15,12 @@ html
 					th=	'Cassete C'
 					th=	'Cassete D'
 			tbody
-				tr
-					th= term
-					th= notaa
-					th= notab
-					th= notac
-					th= notad
+					tr
+						th= term
+						th= notaa
+						th= notab
+						th= notac
+						th= notad
 		form(action="http://127.0.0.1:8081/" method="POST")
 			p Adicionar:
 			input(type="text" name="addtaa")
