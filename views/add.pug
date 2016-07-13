@@ -1,27 +1,30 @@
 doctype html
 html
 	head
+        meta(charset="UTF-8")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		title= 'Adicionar Terminais'
 		link(rel="stylesheet" href="http://yegor256.github.io/tacit/tacit.min.css")
-	body
-		p.
-			Terminal(is) adicionado(s):
-		table
-			thead
-				tr
-					th=	'Terminal'
-					th=	'Cassete A'
-					th=	'Cassete B'
-					th=	'Cassete C'
-					th=	'Cassete D'
-			tbody
-					tr
-						th= term
-						th= notaa
-						th= notab
-						th= notac
-						th= notad
-		form(action="http://127.0.0.1:8081/" method="POST")
-			p Adicionar:
-			input(type="text" name="addtaa")
-			input(type="submit" value="Adicionar")
+    body
+	    section.
+            article.
+    			Terminal(is) adicionado(s):
+	    	    table
+		    	    thead
+			    	    tr
+				    	    th=	'Terminal'
+    				    	th=	'Cassete A'
+	    				    th=	'Cassete B'
+    		    			th=	'Cassete C'
+	    		    		th=	'Cassete D'
+    	    		tbody
+	    	    		tr
+		    	    		th= term
+			    	    	th= notaa
+				    	    th= notab
+    					    th= notac
+        					th= notad
+	        	form(action="http://127.0.0.1:8081/" method="POST")
+		        	p Adicionar:
+		    	    input(type="text" name="addtaa")
+    		     	input(type="submit" value="Adicionar")
